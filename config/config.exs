@@ -31,6 +31,11 @@ config :clima, ClimaWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :clima, Clima.Mailer, adapter: Swoosh.Adapters.Local
 
+# Configures OpenWeatherMap API access
+config :clima, Clima.OpenWeatherMap,
+  api_key: System.get_env("OPENWEATHERMAP_API_KEY"),
+  base_url: "https://api.openweathermap.org"
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
