@@ -27,7 +27,7 @@ defmodule ClimaWeb.WeatherLive do
   end
 
   @impl true
-  def handle_event("detalles", %{"lat" => lat, "lon" => lon}, socket) do
+  def handle_event("details", %{"lat" => lat, "lon" => lon}, socket) do
     {:ok, current_weather} = OpenWeatherMap.get_current_weather(lat, lon)
     {:ok, hourly_forecast} = OpenWeatherMap.get_hourly_forecast(lat, lon)
     {:ok, daily_forecast} = OpenWeatherMap.get_daily_forecast(lat, lon)

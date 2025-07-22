@@ -56,14 +56,14 @@ defmodule ClimaWeb.Components.SearchComponent do
             </td>
             <th>
               <button
-                phx-click="detalles"
+                phx-click="details"
                 phx-value-lat={result.lat}
                 phx-value-lon={result.lon}
                 class="btn btn-primary"
               >
-                detalles
+                Ver
               </button>
-              <button class="btn btn-secondary">favorito</button>
+              <button class="btn btn-secondary">Favorito</button>
             </th>
           </tr>
         <% end %>
