@@ -1,15 +1,33 @@
 defmodule ClimaWeb.WeatherLive do
   alias Clima.OpenWeatherMap
 
-  import ClimaWeb.Components.SearchComponent
-  import ClimaWeb.Components.FooterComponent
-  import ClimaWeb.Components.ForecastComponent
+  import ClimaWeb.Components.{
+    HeroComponent,
+    SearchComponent,
+    ForecastComponent
+  }
 
   use ClimaWeb, :live_view
 
   @impl true
+  def render(assigns) do
+    ~H"""
+    <.hero>
+      <.search on_search="search" search_value={@search_query} search_placeholder="Buscar ciudad" />
+    </.hero>
+    <%= if Enum.any?(@results) do %>
+      <.search_results results={@results} />
+    <% end %>
+    <%= if Enum.any?(@city_forecast) do %>
+      <.forecast_details forecast_data={@city_forecast} />
+    <% end %>
+    """
+  end
+
+  @impl true
   def mount(_params, _session, socket) do
     socket = assign(socket, results: [], search_query: "", city_forecast: %{})
+    IO.inspect(socket)
     {:ok, socket}
   end
 
