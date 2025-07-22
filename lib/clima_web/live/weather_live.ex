@@ -35,9 +35,9 @@ defmodule ClimaWeb.WeatherLive do
     socket =
       assign(socket,
         city_forecast: %{
-          "current" => current_weather,
-          "hourly" => hourly_forecast,
-          "daily" => daily_forecast
+          current: current_weather,
+          hourly: hourly_forecast,
+          daily: daily_forecast
         },
         results: []
       )
