@@ -17,9 +17,10 @@ defmodule Clima.Favorites.Favorite do
   def changeset(favorite, attrs, user_scope) do
     favorite
     |> cast(attrs, [:name, :country, :state, :lat, :lon])
-    |> validate_required([:name, :country, :state, :lat, :lon])
+    |> validate_required([:name, :country, :lat, :lon])
     |> validate_number(:lat, greater_than_or_equal_to: -90, less_than_or_equal_to: 90)
     |> validate_number(:lon, greater_than_or_equal_to: -180, less_than_or_equal_to: 180)
     |> put_change(:user_id, user_scope.user.id)
+    |> unique_constraint([:user_id, :lat, :lon])
   end
 end

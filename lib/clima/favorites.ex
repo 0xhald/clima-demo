@@ -84,6 +84,10 @@ defmodule Clima.Favorites do
     end
   end
 
+  def create_favorite(nil, _attrs) do
+    {:error, "There was an error adding to favorites"}
+  end
+
   @doc """
   Updates a favorite.
 
